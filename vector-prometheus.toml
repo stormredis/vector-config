@@ -1,0 +1,24 @@
+# Set global options
+data_dir = "/mia/vector-config/data"
+
+[sources.in]
+    type = "stdin"
+
+[sinks.my_sink_id]
+  type = "prometheus" # must be: "prometheus"
+  inputs = ["in"]
+  address = "0.0.0.0:9598"
+  namespace = "service"
+
+  buckets = [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1.0, 2.5, 5.0, 10.0] # default, seconds
+  healthcheck = true # default
+
+[sinks.backups]
+  type = "tcp"
+  address = "127.0.0.1:6379"
+  inputs = ["in"]
+
+[sinks.backups.buffer]
+  type = "disk"
+  max_size = 5000000000 # 5gb
+  when_full = "block"
