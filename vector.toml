@@ -1,9 +1,6 @@
 # Set global options
 data_dir = "/mia/vector-config/data"
 
-[sources.in]
-    type = "stdin"
-
 # Ingest data by tailing one or more files
 [sources.apache_logs]
   type         = "file"
@@ -11,7 +8,7 @@ data_dir = "/mia/vector-config/data"
   ignore_older = 86400                         # 1 day
 
 [sinks.out]
-    inputs = ["apache_logs","in"]
+    inputs = ["apache_logs"]
     type = "console"
 
 [sinks.backups]
