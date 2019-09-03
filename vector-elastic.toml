@@ -12,7 +12,7 @@ data_dir = "/mia/vector-config/data"
   # REQUIRED - General
   type = "elasticsearch" # must be: "elasticsearch"
   inputs = ["in"]
-  host = "http://10.24.32.122:9000"
+  host = "http://127.0.0.1:9200"
 
   # OPTIONAL - General
   doc_type = "_doc" # default
@@ -26,11 +26,6 @@ data_dir = "/mia/vector-config/data"
   # OPTIONAL - Requests
   request_in_flight_limit = 5 # default
   request_timeout_secs = 60 # default, seconds
-
-  # OPTIONAL - Basic auth
-  [sinks.my_sink_id.basic_auth]
-    password = "password"
-    user = "username"
 
   # OPTIONAL - Buffer
   [sinks.my_sink_id.buffer]
